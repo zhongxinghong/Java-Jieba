@@ -1,23 +1,14 @@
-# Compiled class file
-*.class
+### IJ Idea
+.idea/
+*.iml
+.attach_pid*
 
-# Log file
-*.log
+### Python
+__pycache__/
 
-# BlueJ files
-*.ctxt
+### maven ###
+/target/
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+/py/jieba/

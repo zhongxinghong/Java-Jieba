@@ -1,0 +1,8 @@
+# .gitignore sample
+###################
+
+# ignore all archive files in this dir...
+*.bz2
+
+# ... except for this one.
+!.gitignore
