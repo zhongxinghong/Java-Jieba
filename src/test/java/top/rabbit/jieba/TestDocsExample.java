@@ -10,6 +10,7 @@ import java.util.List;
 public class TestDocsExample {
 
     public static void test_1_cuts() {
+
         Tokenizer dt = new Tokenizer();
         List<String> segs;
 
@@ -28,12 +29,12 @@ public class TestDocsExample {
     } /* Output:
     [我, 来到, 北京, 清华, 清华大学, 华大, 大学]
     [我, 来到, 北京, 清华大学]
-    Load model 'prob_emit.gz' ... Done! cost 275 ms
     [他, 来到, 了, 网易, 杭研, 大厦]
     [小明, 硕士, 毕业, 于, 中国科学院, 中国, 科学, 学院, 科学院, 计算所, 计算, ，, 后, 在, 日本京都大学, 日本, 京都, 大学, 深造]
-    *///:~
+    */
 
     public static void test_2_load_dict() {
+
         Tokenizer dt = new Tokenizer();
         String USER_CUSTOM_DICT = "/dict.custom.txt";
             // A dict using UTF-8 encoding with BOM header and redundant blank lines
@@ -66,18 +67,16 @@ public class TestDocsExample {
         System.out.println(segs);
 
     } /* Output:
-    Load word dict 'dict.std.txt' ... Done! cost 626 ms
-    Load model 'prob_emit.gz' ... Done! cost 278 ms
     [李小福, 是, 创新, 办, 主任, 也, 是, 云, 计算, 方面, 的, 专家, ;,  , 什么, 是, 八, 一双, 鹿,
     , 例如, 我, 输入, 一个, 带, “, 韩玉, 赏鉴, ”, 的, 标题, ，, 在, 自定义词, 库中, 也, 增加, 了, 此, 词为, N, 类,
     , 「, 台, 中, 」, 正確, 應該, 不會, 被, 切開, 。, mac, 上, 可, 分出, 「, 石墨, 烯, 」, ；, 此時, 又, 可以, 分出, 來凱, 特琳, 了, 。]
-    Load word dict 'dict.custom.txt' ... Done! cost 2 ms
     [李小福, 是, 创新办, 主任, 也, 是, 云计算, 方面, 的, 专家, ;,  , 什么, 是, 八一双鹿,
     , 例如, 我, 输入, 一个, 带, “, 韩玉赏鉴, ”, 的, 标题, ，, 在, 自定义, 词库, 中, 也, 增加, 了, 此, 词为, N, 类,
     , 「, 台中, 」, 正確, 應該, 不會, 被, 切開, 。, mac, 上, 可, 分出, 「, 石墨烯, 」, ；, 此時, 又, 可以, 分出, 來, 凱特琳, 了, 。]
-    *///:~
+    */
 
     public static void test_2_adjust_dict() {
+
         Tokenizer dt = new Tokenizer();
         List<String> segs;
         int freq;
@@ -106,7 +105,6 @@ public class TestDocsExample {
         System.out.println(segs);
 
     } /* Output:
-    Load word dict 'dict.std.txt' ... Done! cost 641 ms
     [如果, 放到, post, 中将, 出错, 。]
     494
     494
@@ -115,11 +113,12 @@ public class TestDocsExample {
     69
     69
     [「, 台中, 」, 正确, 应该, 不会, 被, 切开]
-    *///:~
+    */
 
     public static void test_3_keyword_extract_TFIDF() { /* 默认使用自定义的停词表 */
+
         Tokenizer dt = new Tokenizer();
-        KeywordExtractor tfidf = new TFIDF();
+        KeywordExtractor tfidf = new TFIDF(TFIDF.DEFAULT_DICT, TFIDF.EXTENDED_STOP_WORDS_TXT);
         String sentence = "此外，公司拟对全资子公司吉林欧亚置业有限公司增资4.3亿元，增资后，" +
                 "吉林欧亚置业注册资本由7000万元增加到5亿元。吉林欧亚置业主要经营范围为房地产" +
                 "开发及百货零售等业务。目前在建吉林欧亚城市商业综合体项目。2013年，实现营业" +
@@ -135,9 +134,6 @@ public class TestDocsExample {
         }
 
     } /* Output:
-    Load word dict 'dict.std.txt' ... Done! cost 606 ms
-    Load model 'prob_emit.gz' ... Done! cost 282 ms
-    Load IDF dict 'idf.std.txt' ... Done! cost 563 ms
     [欧亚, 吉林, 置业, 万元, 增资, 7000, 139.13, 2013, 4.3, 综合体, 经营范围, 亿元, 在建, 全资, 注册资本, 百货, 零售, 子公司, 营业, 净利润]
     rank: 01, score: 0.816921, 欧亚
     rank: 02, score: 0.737495, 吉林
@@ -159,5 +155,5 @@ public class TestDocsExample {
     rank: 18, score: 0.163337, 子公司
     rank: 19, score: 0.155773, 营业
     rank: 20, score: 0.142569, 净利润
-    *///:~
+    */
 }

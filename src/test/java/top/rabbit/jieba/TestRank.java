@@ -1,5 +1,6 @@
 package top.rabbit.jieba;
 
+import top.rabbit.jieba.rank.KeywordExtractor;
 import top.rabbit.jieba.rank.TFIDF;
 import top.rabbit.jieba.rank.TextRank;
 import top.rabbit.jieba.struct.Keyword;
@@ -29,7 +30,7 @@ public class TestRank {
 
     public static void test_TFIDF(String filename) {
         Tokenizer dt = new Tokenizer();
-        TFIDF tfidf = new TFIDF();
+        TFIDF tfidf = new TFIDF(KeywordExtractor.EXTENDED_STOP_WORDS_TXT);
         List<String> segs = dt.cut(IOUtils.readFrom(filename));
         List<Keyword> kws = tfidf.extract(segs, 50);
         System.out.println(kws);

@@ -1,5 +1,6 @@
 package top.rabbit.jieba;
 
+import top.rabbit.jieba.dataset.Dict;
 import top.rabbit.jieba.rank.TFIDF;
 import top.rabbit.jieba.struct.Keyword;
 import top.rabbit.jieba.tokenizer.POSTokenizer;
@@ -29,6 +30,7 @@ public class TestDict {
 
 
     public static void test_userDict() {
+
         Tokenizer dt = new Tokenizer();
 
         System.out.println(dt.cut(sentence));
@@ -152,4 +154,11 @@ public class TestDict {
     [應該, 此時, 特琳, 词为, 不會, 李小福, 來凱, 自定义词, 切開, 库中]
     */
 
+    public static void test_NONE_DICT() {
+        Tokenizer dt = new Tokenizer(Dict.NONE_DICT);
+        dt.loadUserDict(Dict.STD_WORD_DICT_GZ);
+        List<String>segs = dt.cut(IOUtils.readFrom(IOUtils.TEST_FILE_1));
+        TFIDF tfidf = new TFIDF();
+        System.out.println(tfidf.extract(segs));
+    }
 }

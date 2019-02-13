@@ -14,6 +14,15 @@ public final class TextRank extends KeywordExtractor<TaggedWord> {
             new ArrayList<String>(Arrays.asList("ns", "n", "vn", "v"));
     private static final int span = 5;
 
+    public TextRank(String STOP_WORDS_FILE) {
+        super();
+        loadStopWords(STOP_WORDS_FILE);
+    }
+
+    public TextRank() {
+        super();
+    }
+
     private boolean filter(TaggedWord tw, List<String> posList) {
         return (posList.contains(tw.flag))
                 && (tw.word.trim().length() >= 2)

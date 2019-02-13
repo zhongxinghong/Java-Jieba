@@ -116,7 +116,8 @@ public class Test {
         //testRank();
         //testMultiCut();
         //TestAsync.asnyc_cut();
-        testDict();
+        //testDict();
+        //TestDocsExample.test_3_keyword_extract_TFIDF();
     }
 
 }

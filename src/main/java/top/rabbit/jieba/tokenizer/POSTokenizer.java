@@ -427,7 +427,7 @@ public final class POSTokenizer {
         return cut(sentence, true);
     }
 
-    public List<TaggedWord> cut_noHMM(String sentenct) {
-        return cut(sentenct, false);
+    public List<TaggedWord> cut_noHMM(String sentence) {
+        return cut(sentence, false);
     }
 }

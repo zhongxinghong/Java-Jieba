@@ -53,7 +53,7 @@ public final class Tokenizer {
         return new ArrayList<String>(userDicts);
     }
 
-    public int getUserDictsSize() {
+    int getUserDictsSize() {
         return userDicts.size();
     }
 
@@ -476,8 +476,10 @@ public final class Tokenizer {
         initialize();
         List<String> segs = new ArrayList<String>();
         for (String blk : RegexUtils.split(RegexUtils.reHan_cutAll, sentence)) {
-            if (CharUtils.isSpace(blk))
+            // if (CharUtils.isSpace(blk))
+            if (blk.isEmpty()) {
                 continue;
+            }
             if (CharUtils.isChinese(blk)) {
                 segs.addAll(_cutAll(blk));
             } else {
