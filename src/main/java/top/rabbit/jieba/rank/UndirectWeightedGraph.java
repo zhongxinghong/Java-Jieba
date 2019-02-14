@@ -27,7 +27,7 @@ final class UndirectWeightedGraph<T> {
 
     private final Map<T, List<Edge>> graph = new HashMap<T, List<Edge>>();
 
-    public void addEdge(T start, T end, int weight) {
+    void addEdge(T start, T end, int weight) {
         Edge e;
         List<Edge> lst;
         e = new Edge(start, end, weight);
@@ -49,7 +49,7 @@ final class UndirectWeightedGraph<T> {
         }
     }
 
-    public Map<T, Double> rank() {
+    Map<T, Double> rank() {
         Map<T, Double> ws = new HashMap<T, Double>();
         Map<T, Double> outSum = new HashMap<T, Double>();
         double wsdef = (graph.isEmpty()) ? 1.0D : ( 1.0D / (double)graph.size() );

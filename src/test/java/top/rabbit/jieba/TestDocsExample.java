@@ -1,9 +1,8 @@
 package top.rabbit.jieba;
 
-import top.rabbit.jieba.rank.KeywordExtractor;
 import top.rabbit.jieba.rank.TFIDF;
-import top.rabbit.jieba.tokenizer.Tokenizer;
 import top.rabbit.jieba.struct.Keyword;
+import top.rabbit.jieba.tokenizer.Tokenizer;
 
 import java.util.List;
 
@@ -118,7 +117,7 @@ public class TestDocsExample {
     public static void test_3_keyword_extract_TFIDF() { /* 默认使用自定义的停词表 */
 
         Tokenizer dt = new Tokenizer();
-        KeywordExtractor tfidf = new TFIDF(TFIDF.DEFAULT_DICT, TFIDF.EXTENDED_STOP_WORDS_TXT);
+        TFIDF tfidf = new TFIDF(TFIDF.DEFAULT_DICT, TFIDF.EXTENDED_STOP_WORDS_TXT);
         String sentence = "此外，公司拟对全资子公司吉林欧亚置业有限公司增资4.3亿元，增资后，" +
                 "吉林欧亚置业注册资本由7000万元增加到5亿元。吉林欧亚置业主要经营范围为房地产" +
                 "开发及百货零售等业务。目前在建吉林欧亚城市商业综合体项目。2013年，实现营业" +

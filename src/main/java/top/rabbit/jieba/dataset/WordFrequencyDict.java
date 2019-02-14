@@ -49,7 +49,7 @@ public final class WordFrequencyDict extends Dict {
         }
 
         if (freq == 0) {
-            boolean flg = WordFrequencyViterbi.addForceSplitWord(word);
+            WordFrequencyViterbi.addForceSplitWord(word);
         }
         /*
         def add_word(self, word, freq=None, tag=None):

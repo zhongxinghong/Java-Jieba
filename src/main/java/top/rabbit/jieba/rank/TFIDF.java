@@ -89,6 +89,7 @@ public final class TFIDF extends KeywordExtractor<String> {
         }
     }
 
+    @Override
     public List<Keyword> extract(List<String> words, int topK) {
         initialize();
         Map<String, Double> freq = new HashMap<String, Double>();
@@ -144,4 +145,9 @@ public final class TFIDF extends KeywordExtractor<String> {
                 return tags
          */
     };
+
+    @Override
+    public List<Keyword> extract(List<String> words) {
+        return extract(words, DEFAULT_TOPK);
+    }
 }

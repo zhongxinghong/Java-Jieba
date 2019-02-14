@@ -100,7 +100,13 @@ public final class TextRank extends KeywordExtractor<TaggedWord> {
              */
     }
 
+    @Override
     public List<Keyword> extract(List<TaggedWord> words, int topK) {
         return extract(words, topK, DEFAULT_ALLOWED_POS);
+    }
+
+    @Override
+    public List<Keyword> extract(List<TaggedWord> words) {
+        return extract(words, DEFAULT_TOPK);
     }
 }

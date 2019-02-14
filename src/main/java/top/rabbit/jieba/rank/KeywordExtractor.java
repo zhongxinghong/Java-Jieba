@@ -15,7 +15,7 @@ import java.util.zip.GZIPInputStream;
 
 public abstract class KeywordExtractor <T> {
 
-    private static final int DEFAULT_TOPK = 20;
+    protected static final int DEFAULT_TOPK = 20;
     public static final String DEFAULT_STOP_WORDS_TXT = "/stopwords.default.txt";
     public static final String EXTENDED_STOP_WORDS_TXT = "/stopwords.extended.txt";
 
@@ -73,9 +73,7 @@ public abstract class KeywordExtractor <T> {
         return stopWords.remove(word);
     }
 
-    public List<Keyword> extract(List<T> words) {
-        return extract(words, DEFAULT_TOPK);
-    };
+    abstract public List<Keyword> extract(List<T> words);
 
     abstract public List<Keyword> extract(List<T> words, int topK);
 }

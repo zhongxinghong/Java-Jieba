@@ -299,14 +299,10 @@ POSTokenizer pt = new POSTokenizer(dt);
 
 ### 关键词提取
 
-`TFIDF` 类和 `TextRank` 类分别可以实现基于 `TF-IDF` 算法和 `TextRank` 算法的关键词提取，他们共同继承与 `KeywordExtractor` 抽象基类，并各自实现了下述的 `extract` 抽象方法。详见 [TFIDF][TFIDF], [TextRank][TextRank], [KeywordExtractor][KeywordExtractor] 类。
+`TFIDF` 类和 `TextRank` 类分别可以实现基于 `TF-IDF` 算法和 `TextRank` 算法的关键词提取，他们共同继承与 `KeywordExtractor` 抽象基类，并各自实现了下述的 `extract` 抽象方法。默认值为 `topK = 20` 。详见 [TFIDF][TFIDF], [TextRank][TextRank], [KeywordExtractor][KeywordExtractor] 类。
 ```java
 abstract public List<Keyword> extract(List<T> words, int topK);
-```
-
-`KeywordExtractor` 类还定义了一个统一的 `extract` 函数的多态，它使用默认值 `topK = 20` 。
-```java
-public List<Keyword> extract(List<T> words);
+abstract public List<Keyword> extract(List<T> words);
 ```
 
 它们共同的返回值类型为 `Keyword` ，相当于 `tuple(word, score, rank)` 或 `tuple(word, flag, score, rank)` ，详见 [Keyword][Keyword] 类。它相当于原 Jieba 中的 `pair` 类，详见 [pair][pair] 。
@@ -345,7 +341,7 @@ IDF 表默认使用定义在 `TFIDF` 类中的 `STD_IDF_DICT_GZ` 。目前仅有
 public static void test_3_keyword_extract_TFIDF() { /* 默认使用自定义的停词表 */
 
     Tokenizer dt = new Tokenizer();
-    KeywordExtractor tfidf = new TFIDF(TFIDF.DEFAULT_DICT, TFIDF.EXTENDED_STOP_WORDS_TXT);
+    TFIDF tfidf = new TFIDF(TFIDF.DEFAULT_DICT, TFIDF.EXTENDED_STOP_WORDS_TXT);
     String sentence = "此外，公司拟对全资子公司吉林欧亚置业有限公司增资4.3亿元，增资后，" +
             "吉林欧亚置业注册资本由7000万元增加到5亿元。吉林欧亚置业主要经营范围为房地产" +
             "开发及百货零售等业务。目前在建吉林欧亚城市商业综合体项目。2013年，实现营业" +

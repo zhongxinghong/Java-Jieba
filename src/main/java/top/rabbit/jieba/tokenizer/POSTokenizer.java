@@ -35,7 +35,7 @@ public final class POSTokenizer {
         this(new Tokenizer());
     }
 
-    private synchronized boolean isInitialized() {
+    synchronized boolean isInitialized() {
         return (dict != null && dt.isInitialized());
     }
 

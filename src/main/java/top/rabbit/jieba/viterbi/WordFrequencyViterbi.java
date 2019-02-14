@@ -108,20 +108,12 @@ public final class WordFrequencyViterbi {
         return emitP;
     }
 
-    public static Map<Character, Map<Character, Double>> getEmitP() {
-        return emitP;
+    public static synchronized void addForceSplitWord(String word) {
+        forceSplitWords.add(word);
     }
 
-    public static boolean addForceSplitWord(String word) {
-        synchronized (WordFrequencyViterbi.class) {
-            return forceSplitWords.add(word);
-        }
-    }
-
-    public static boolean delForceSplitWord(String word) {
-        synchronized (WordFrequencyViterbi.class) {
-            return forceSplitWords.remove(word);
-        }
+    public static synchronized void delForceSplitWord(String word) {
+        forceSplitWords.remove(word);
     }
 
     private static Pair<Double, List<Character>> viterbi(String obs, Character[] states) {

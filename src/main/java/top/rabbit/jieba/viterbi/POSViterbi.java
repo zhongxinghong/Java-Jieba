@@ -184,22 +184,6 @@ public final class POSViterbi {
         return states;
     }
 
-    public static Map<Pair<String, String>, Double> getStartP() {
-        return startP;
-    }
-
-    public static Map<Pair<String, String>, Map<Pair<String, String>, Double>> getTransP() {
-        return transP;
-    }
-
-    public static Map<Pair<String, String>, Map<Character, Double>> getEmitP() {
-        return emitP;
-    }
-
-    public static Map<Character, List<Pair<String, String>>> getStates() {
-        return states;
-    }
-
     public static Pair<Double, List<Pair<String, String>>> viterbi(String obs) {
         final Set<Pair<String, String>> allStates = transP.keySet();
         List<Map<Pair<String, String>, Double>> V = new ArrayList<Map<Pair<String, String>, Double>>() {{}};
